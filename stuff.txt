@@ -1,0 +1,72 @@
+<start>
+	<music>
+	title: 88 keys Digital Piano + stand with 3 pedals + bench
+	price: $400, all included.
+	img: piano.jpg;
+	img: piano2.jpg;
+	desc: Alesis Coda Pro - an 88 weighted keys digital piano
+	+ official stand, with all 3 piano pedals - sustain, sostenuto, una corda (Coda Piano Stand)
+	+ bench
+	+ (extra sustain pedal, to use when somewhere else away from the stand)
+
+
+	This is the perfect beginners kit to learn piano. This 88 weighted keys, velocity-sensitive digital piano has a few voices, 64 voices polyphony, a pitch wheel and many connectors:
+	<ul><li>MIDI out</li>			<li>also Usb-MIDI</li>			<li>Stereo 1/4 inch aux input for playing along with external equipment.</li>			<li>Stereo 1/4 inch aux <i>output</i></li>		<li>Headphone jack (2 options: mute loudspeakers or have both headphone and loudspeakers sound (e.g., for plugging it into an amplifier)</li>	</ul>
+	It has a bunch of functions, like scale, split, demo songs and record.
+
+	<b>It comes with the official stand, with all 3 piano pedals</b>. The bench is also included in the price.
+
+	It also comes with an extra sustain pedal -- in case you want to play the piano at a party or somewhere else -- and a bench.
+
+	This product has been discontinued because a new line was released, but here's the old <a href="https://www.amazon.com/Alesis-Coda-Pro-Hammer-Action-Keyboard/dp/B00SHCDMRQ/">Amazon link</a>.
+<end> 
+
+<start>
+	<music>
+	title: Fender Standard Stratocaster (MIM)
+	price: $600.
+	img: guitar.jpg
+	desc: Fender Standard Stratocaster (Made in Mexico)
+
+	Comes with free soft case and guitar stand. Also strap and tremolo arm.
+
+	I regulated it to be very close to neck, so it's very easy to play and bend strings, but it should be regulated again for tuning.
+
+	<details>
+	<summary>All guitar specs:</summary>
+	Model:   Standard Stratocaster with Vintage Tremolo, Maple Fretboard, Solid Body Alder
+
+	Pickup Configuration:   SSS
+    
+	Right Handed
+	
+	Nut Width:    1.65"
+	
+	Fretboard Radius:    9.5"
+	
+	Scale Length:    25.5"
+	
+	Serial number: MN6227027
+	
+	1991-1997
+	</details>
+<end>
+
+<start>
+	<sold>
+	title: cheap, simple Oster blender
+	price: $10
+	img: blender1.jpg;
+	img: blender2.jpg;
+	desc: Works, but it's somewhat noisy.
+<end>
+
+<--com> template:
+<start>
+	title: Digital Piano
+	price: $400
+	img: ;
+	desc:
+<end>
+<com-->
+

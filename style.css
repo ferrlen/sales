@@ -1,0 +1,489 @@
+:root {
+	--color: black;
+	--bg-color: #EEE;
+	--primary-light: #DDD;
+	/* --primary-light: #bef8d5; */
+	--primary-mid: #00ab43;
+	--primary-dark: #006a51;
+	--gradient: 10%;
+	--box-shadow: rgb(146 161 176 / 15%);
+	/* aquamarine
+	#83E8BA
+	#B2E6D4
+	#689689 */
+}
+
+.dark {
+	color-scheme: dark;
+	--color: #EEE;
+	--bg-color: black;
+	--primary-dark: #bef8d5;
+	--primary-mid: #03e35b;
+	/* --primary-light: #006a51; */
+	--primary-light: #333;
+	--box-shadow: rgb(146 161 176 / 85%);
+	
+	a {
+		color: var(--primary-mid);
+	}
+
+	input:valid {
+		background-color: var(--primary-mid);
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	color-scheme: light;
+	margin: 0;
+	font-family: "Open Sans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;	
+	color: var(--color);
+	background-color: var(--bg-color);
+}
+
+main, main * {
+	transition: all 1s, color 0s;	
+}
+
+/* needs this instead due to Chrome (and probably Safari and Firefox iOS) bug https://stackoverflow.com/questions/22069877/css-transitions-strange-unwanted-delay-in-webkit-browsers-chrome-and-safari , https://bugs.webkit.org/show_bug.cgi?id=46041 */
+@supports (not ( -moz-orient: inline)) {
+	main, main * {
+		transition: all 1s, color 0s;	
+	}
+	
+	.title, .item, h2, .description, section {
+		transition: color 300ms, background-color 600ms;
+	}	
+}
+
+main {
+	padding: 2rem;
+}
+
+#top-nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 30;
+	background-color: var(--bg-color);
+	box-shadow: 0 1px 4px var(--box-shadow);
+}
+
+#top-nav a {
+	display: block;
+	text-align: center;
+	padding: 1rem;
+	text-decoration: none;
+	font-size: 1.2rem;
+	background-color: var(--bg-color);
+	color: var(--color);
+}
+
+#top-nav a:hover {
+	background-color: var(--primary-light);
+}
+
+
+.flexbox-container {
+	display: flex;
+}
+
+#top-nav .flexbox-container {
+	flex-direction: row;
+	float: left;
+}
+
+a#hamburguer-menu {
+	display: none;
+}
+
+#toggle-dark {
+	float: right;
+	font-size: 1.5rem;
+	padding: .7rem;
+	cursor: pointer;
+}
+
+#toggle-dark input {
+	width: 2rem;
+	cursor: pointer;
+	/* filter: hue-rotate(265deg); */
+}
+
+#loading {
+	margin: auto;
+	padding: 3rem;
+	position: fixed;
+	z-index: 20;
+	height: 100%;
+	width: 100%;
+	background-color: var(--bg-color);
+	transition: opacity 500ms;
+}
+
+#loading > div:first-child {
+	margin-top: 3rem;
+	font-size: 3rem;
+}
+
+#loading div {
+	margin: 0.5rem;
+}
+
+.loading-circle {
+	display: inline-block;
+	border: 20px solid #EAF0F6;
+	border-radius: 50%;
+	border-top: 20px solid black;
+	width: 15px;
+	height: 15px;
+	margin: 0 2rem;
+	animation: spinner 4s linear infinite;
+}
+
+@keyframes spinner {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+ }
+
+section {
+	scroll-margin-top: 4rem;
+}
+
+h2 {
+	margin: 4rem 0 2rem 0;
+}
+
+:target h2 {
+	animation: shine 1s ease-in 500ms forwards;
+}
+
+@keyframes shine {
+	0%, 100% {
+		color: var(--color);
+	}
+	50% {
+		color: var(--primary-mid);
+	}
+}
+
+.item {
+	display: grid;
+	grid-template-areas: 
+		'title title'
+		'price price'
+		'description images';
+	border-top: 1px solid #AAA;
+	border-radius: 0.5rem;
+	background-color: var(--primary-light);
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	text-align: justify;
+}
+
+.item > * {
+	margin-bottom: 2rem;
+}
+
+.title {
+	grid-area: title;
+	color: var(--bg-color);
+	background-color: var(--color);
+	border-radius: 0.2rem;
+	padding: 0.2rem;
+}
+
+.sold * {
+	text-decoration: line-through;
+}
+
+.sold .title::before {
+	content: '**SOLD** ';
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	padding: 0.5rem;
+}
+
+.sold {
+	position: relative;
+	background-color: color-mix(in srgb, var(--primary-light), red 10%);
+}
+
+.sold::after {
+	content: 'SOLD';
+	width: fit-content;
+	position: absolute;
+	color: red;
+	font-size: 5rem;
+	border: 7px solid red;
+	transform: rotate(35deg);
+	padding: 1rem;
+	left: 40%;
+	top: 50%;
+	display: inline-block;
+	z-index: 10;
+}
+
+.price {
+	grid-area: price;
+	font-weight: bold;
+}
+
+.price::before {
+	content: 'Price:';
+	background-color: var(--primary-dark);
+	color: var(--bg-color);
+	font-weight: bold;
+	border-radius: 50%;
+	padding: 0.2rem 0.4rem 0.4rem 0.4rem;
+	margin-right: 0.2rem;	
+}
+
+.description {
+	grid-area: description;
+}
+
+.images {
+	grid-area: images;
+	align-self: center;
+	justify-self: center;
+	margin-left: 1rem;
+}
+
+.images img {
+	max-width: 100%;
+	max-height: 70vh;
+	float: right;
+}
+
+ol > li :first-child, ol > li::marker {
+	font-weight: bold;
+}
+
+#list li {
+	margin: 1rem 0;
+	cursor: pointer;
+}
+
+.list-price {
+	color: var(--primary-mid);
+}
+
+dialog {
+	border: 0;
+	padding: 0;
+	/* box-shadow is being used instead of dialog::backdrop because otherwise slide-up animation doesn't work */
+	box-shadow: 0 0 0 100vh rgb(0 0 0 / 0.3);	
+	animation: slide-up 500ms forwards, fade-in 600ms forwards;
+
+	& input[type="text"] {
+		width: 3rem;
+	}
+	
+	& input:valid {
+		background-color: palegreen;
+	}
+	  
+	& input:invalid {
+		background-color: lightpink;
+	}
+	
+	& button {
+		background-color: var(--primary-dark);
+		color: var(--primary-light);
+		padding: 0.4rem;
+		width: 5rem;
+	}
+
+	& .flexbox-container.buttons {
+		margin-top: 3rem;
+	}
+
+	& > .dialog-body {
+		background: var(--bg-color);
+		color: var(--color);
+		border: 0;
+		min-width: 20vw;
+		height: fit-content;
+		padding: 2rem;
+		margin: 0;
+		border: 3px solid var(--primary-dark);
+
+		& * {
+			margin: 0.3rem;
+		}
+			
+		& .dialog-title {
+			color: var(--primary-dark);
+			font-size: 1.5rem;
+			font-weight: bolder;
+			text-align: center;
+			background-color: var(--primary-dark);
+			color: var(--bg-color);
+		}
+
+		& h4 {
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+
+		& .flexbox-container {
+			justify-content: space-evenly;
+		}
+	}
+}
+
+/* dialog animations */
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slide-up {
+	0% {
+		transform: translateY(200%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+  
+  
+
+@media screen and (max-width: 700px) {
+	#loading {
+		padding: initial;
+	}
+
+	#loading > div:first-child {
+		margin-top: 3rem;
+		font-size: 2rem;
+	}
+	
+	a#hamburguer-menu {
+		display: block;
+		cursor: pointer;
+	}
+	
+	#top-nav .flexbox-container {
+		position: absolute;
+		top: 0;
+		flex-direction: column;
+	}
+
+	#top-nav a {
+		padding: 0.9rem;
+	}
+
+	#top-nav a:not(:first-child) {
+		font-size: 0;
+		max-height: 0;
+		padding: 0;
+		opacity: 0;
+		transition: all 0.2s linear;
+	}	
+
+	#top-nav .flexbox-container.active {
+		box-shadow: 0 1px 4px var(--box-shadow);
+
+		& a:not(:first-child) {
+			font-size: 1.2rem;
+			padding: 0.9rem;
+			max-height: 50px;
+			opacity: 1;
+		}
+
+		& a:first-child {
+			background-color: #AAA;
+		}
+	}
+
+	main {
+		padding: 1rem;
+	}
+
+	.item {
+		grid-template-areas: 
+			'title'
+			'price'
+			'images'
+			'description';
+	}
+
+	.images {
+		margin-left: unset;
+	}
+
+	.sold::after {
+		left: 15%;
+	}
+		
+	/* styling hamburguer ICON */
+	#icon {
+		position: relative;
+		top: -0.5rem;
+	}
+	
+	#icon,
+	#icon::before,
+	#icon::after {
+		width: 1.5rem;
+		height: 0.1rem;
+		background-color: var(--color);
+		display: inline-block;
+	}
+	
+	#icon::before,
+	#icon::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all 0.2s;
+	}
+	
+	#icon::before {
+		top: -0.4rem;
+	}
+	#icon::after {
+		top: 0.4rem;
+	}
+	
+	#hamburguer-menu:hover {
+		#icon:not(.open)::before {
+			top: -0.6rem;
+		}
+		#icon:not(.open)::after {
+			top: 0.6rem;
+		}
+
+		#icon.open::before, #icon.open::after {
+			width: 2.5rem;
+			left: -0.5rem;
+		}
+	}
+	
+	/* icon animation when hamburguer menu is opened */
+	#icon.open {
+		background-color: transparent;
+	}
+	#icon.open::before {
+		top: 0;
+		transform: rotate(135deg);
+	}
+	#icon.open::after {
+		top: 0;
+		transform: rotate(-135deg);
+	}
+}
+
