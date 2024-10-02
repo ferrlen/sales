@@ -100,14 +100,14 @@ a#hamburguer-menu {
 	display: none;
 }
 
-#toggle-dark {
+#dark-mode-component {
 	float: right;
 	font-size: 1.5rem;
 	padding: .7rem;
 	cursor: pointer;
 }
 
-#toggle-dark input {
+#dark-mode-component input {
 	width: 2rem;
 	cursor: pointer;
 	/* filter: hue-rotate(265deg); */
@@ -121,7 +121,7 @@ a#hamburguer-menu {
 	height: 100%;
 	width: 100%;
 	background-color: var(--bg-color);
-	transition: opacity 500ms;
+	transition: opacity 500ms ease-in;
 }
 
 #loading > div:first-child {

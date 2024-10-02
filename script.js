@@ -5,20 +5,23 @@
 
 // DARK MODE
 // JS for toggling dark mode
-const toggleDark = document.getElementById('toggle-dark');
-// the dark-mode "switch" is just a HTML `input` type range: it's values are 1 for light mode, 0 for dark mode
-if (localStorage.toggleDark === "1" || 
-(!localStorage.toggleDark && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+const darkModeComponent = document.getElementById('dark-mode-component');
+// the dark-mode-component "switch" is just a HTML `input` type range: it's values are 1 for light mode, 0 for dark mode
+if (localStorage.darkModeComponent === "1" || 
+(!localStorage.darkModeComponent && window.matchMedia('(prefers-color-scheme: light)').matches)) {
 	// page initial default value is dark mode, so if user prefers light, it has to change to light mode "1"
 	document.body.classList.remove('dark');
-	toggleDark.querySelector('input').value = "1";
+	darkModeComponent.querySelector('input').value = "1";
 }
-toggleDark.addEventListener('click', (ev) => {
-	localStorage.toggleDark = localStorage.toggleDark === "1" ? "0" : "1";
-	const input = toggleDark.querySelector('input');
-	input.value = localStorage.toggleDark;
+function toggleDarkMode(ev) {
+	localStorage.darkModeComponent = localStorage.darkModeComponent === "1" ? "0" : "1";
+	const input = darkModeComponent.querySelector('input');
+	input.value = localStorage.darkModeComponent;
 	document.body.classList.toggle('dark');
-}, {capture: true});
+};
+darkModeComponent.addEventListener('click', toggleDarkMode, {capture: true});
+// the following listener is needed for touch events, if user swipes the input slider with finger instead of clicking on it
+darkModeComponent.addEventListener('change', toggleDarkMode);
 
 
 
