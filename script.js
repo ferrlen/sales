@@ -16,12 +16,13 @@ if (localStorage.darkModeComponent === "1" ||
 function toggleDarkMode(ev) {
 	localStorage.darkModeComponent = localStorage.darkModeComponent === "1" ? "0" : "1";
 	const input = darkModeComponent.querySelector('input');
-	input.value = localStorage.darkModeComponent;
+	// this setTimeout is just for GlobalSpeed (Firefox, Chrome version works fine) and other browser extensions that might get incorrectly triggered otherwise by `pointerup` event
+	setTimeout(() => input.value = localStorage.darkModeComponent, 0);
 	document.body.classList.toggle('dark');
 };
-darkModeComponent.addEventListener('click', toggleDarkMode, {capture: true});
-// the following listener is needed for touch events, if user swipes the input slider with finger instead of clicking on it
-darkModeComponent.addEventListener('change', toggleDarkMode);
+// `pointerup` instead of `click` so that it also triggers when user's finger carries the darkModeComponent slider from one side to the other
+// `capture` is needed so that the function runs before the input's change event (which isn't cancelable), otherwise the input's slider could flicker "on/off"
+darkModeComponent.addEventListener('pointerup', toggleDarkMode, {capture: true});
 
 
 
@@ -210,7 +211,7 @@ function sortSales() {
 
 
 
-// LIST
+// LISTING
 // Get all items and make a list of them, then add it to the `list` dialog
 function listItems() {
 	const allItems = [];
